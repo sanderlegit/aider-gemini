@@ -1,0 +1,17 @@
+[project]
+name = "google-ai"
+version = "0.1.0"
+description = "pkg with aider and google gemini deps"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aider-chat[playwright]>=0.81.3",
+    "google-cloud-aiplatform>=1.88.0",
+    "google-generativeai>=0.8.4",
+    "pandoc>=2.3",
+]
+
+[project.optional-dependencies]
+playwright = [
+    "playwright>=1.40.0",
+]
