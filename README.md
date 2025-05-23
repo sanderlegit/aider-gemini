@@ -63,15 +63,27 @@ You can also use `make sync`, which is an alias for `make install`.
 
 ### Running Aider with Vertex AI
 
+### Shell Alias for Convenience
+
+For easier access, you can create a shell alias. The `Makefile` defines `VENV_DIR := .venv`, so the Python interpreter path within the virtual environment is `.venv/bin/python`.
+
+Here's an example of how you might define an alias in your shell configuration file (e.g., `.bashrc`, `.zshrc`):
+
+```
+alias ai="uv run --no-project -p $HOME/google-ai/.venv/bin/python aider --no-attribute-author --no-attribute-committer --dark-mode --model gemini-2.5-pro-preview-05-06"
+```
+
+### Within the project
+
 Once the setup is complete, you can run Aider. You'll need to specify a Vertex AI model. Refer to the [Aider documentation for Vertex AI](https://aider.chat/docs/llms/vertex.html) for available model names (e.g., `vertex_ai/gemini-1.5-pro-preview-0514`, `vertex_ai/claude-3-5-sonnet@20240620`).
 
 You can use the `make run-aider` target, passing the model and other Aider arguments via `AIDER_ARGS`:
 ```bash
-make run-aider AIDER_ARGS="--model vertex_ai/gemini-1.5-pro-preview-0514 your_file.py"
+make run-aider AIDER_ARGS="--model vertex_ai/gemini-2.5-pro-preview-05-06 your_file.py"
 ```
 Or, to start an Aider session with a specific model:
 ```bash
-make run-aider AIDER_ARGS="--model vertex_ai/gemini-1.5-pro-preview-0514"
+make run-aider AIDER_ARGS="--model vertex_ai/gemini-2.5-pro-preview-05-06"
 ```
 
 Alternatively, you can activate the virtual environment and run `aider` directly, or use `uv run`:
@@ -81,31 +93,8 @@ Alternatively, you can activate the virtual environment and run `aider` directly
 # aider --model vertex_ai/gemini-1.5-pro-preview-0514
 
 # Or using uv run directly
-uv run -p .venv/bin/python aider --model vertex_ai/gemini-1.5-pro-preview-0514
+uv run -p .venv/bin/python aider --model vertex_ai/gemini-2.5-pro-preview-05-06
 ```
-
-### Shell Alias for Convenience
-
-For easier access, you can create a shell alias. The `Makefile` defines `VENV_DIR := .venv`, so the Python interpreter path within the virtual environment is `.venv/bin/python`.
-
-Here's an example of how you might define an alias in your shell configuration file (e.g., `.bashrc`, `.zshrc`):
-
-```bash
-# Get the absolute path to your project directory
-# PROJECT_DIR=$(pwd) # if you are in the project root
-# Or set it manually:
-# PROJECT_DIR="/path/to/your/google-ai-project"
-
-# Example alias (adjust PROJECT_DIR and default model as needed):
-# alias ai='uv run --no-project -p '"$PROJECT_DIR"'/.venv/bin/python aider --no-attribute-author --no-attribute-committer --dark-mode --model vertex_ai/gemini-1.5-pro-preview-0514'
-```
-The original alias example was:
-```
-# Example from original README:
-# ❯ which ai
-# ai: aliased to uv run --no-project -p /Users/sander/.config/google-ai/.venv/bin/python aider --no-attribute-author --no-attribute-committer --dark-mode --model gemini-2.5-pro-preview-05-06
-```
-To adapt this, replace `/Users/sander/.config/google-ai/` with the actual path to this project directory on your system. The model name `gemini-2.5-pro-preview-05-06` should be prefixed with `vertex_ai/` if using Aider's Vertex AI integration, e.g., `vertex_ai/gemini-2.5-pro-preview-05-06` (ensure this specific model identifier is supported by Aider/Vertex).
 
 ## Makefile Targets
 
