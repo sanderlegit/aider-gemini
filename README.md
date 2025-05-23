@@ -23,7 +23,7 @@ Run the following command and follow the prompts to log in with your Google acco
 ```bash
 gcloud auth application-default login
 ```
-This command stores your credentials in a well-known location that Aider and Google client libraries can automatically find. Ensure the account you use has permissions to access Vertex AI services.
+This command stores your credentials in a well-known location that Aider and Google client libraries can automatically find. Ensure the account you use has permissions to access Vertex AI services. For more details on this command, see the [official gcloud documentation](https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login).
 
 ### 2. Configure Vertex AI for Aider
 
@@ -51,7 +51,7 @@ export VERTEXAI_LOCATION="us-central1"
 
 This project uses a `Makefile` to simplify the setup and common tasks. The `make install` command will:
 1.  Create a Python virtual environment in `./.venv` using `uv`.
-2.  Install all required dependencies (including Aider and Google Cloud libraries) specified in `pyproject.toml` into the virtual environment.
+2.  Install all required dependencies (including Aider and Google Cloud libraries like the Vertex AI SDK) specified in `pyproject.toml` into the virtual environment. For more information on the SDK itself, see the [Vertex AI SDK documentation](https://cloud.google.com/vertex-ai/docs/start/install-sdk).
 
 Run the following command:
 ```bash
